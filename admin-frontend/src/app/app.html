@@ -1,0 +1,103 @@
+<div class="dashboard">
+
+  <header class="dashboard-header">
+    <div>
+      <h1>Admin Dashboard</h1>
+      <p>Welcome back, Administrator.</p>
+    </div>
+
+    <p-button
+      label="Logout"
+      icon="pi pi-sign-out"
+      severity="secondary">
+    </p-button>
+  </header>
+
+
+  <section class="stats">
+
+    <p-card>
+      <div class="stat">
+        <span class="label">Total Users</span>
+        <span class="value">1,248</span>
+        <p-tag value="+12%" severity="success"></p-tag>
+      </div>
+    </p-card>
+
+    <p-card>
+      <div class="stat">
+        <span class="label">Documents</span>
+        <span class="value">5,842</span>
+        <p-tag value="+8%" severity="success"></p-tag>
+      </div>
+    </p-card>
+
+    <p-card>
+      <div class="stat">
+        <span class="label">Active Users</span>
+        <span class="value">932</span>
+        <p-tag value="Active" severity="info"></p-tag>
+      </div>
+    </p-card>
+
+  </section>
+
+
+  <section class="system">
+
+    <p-card header="System Health">
+
+      <p>Overall system health</p>
+
+      <p-progressbar [value]="92"></p-progressbar>
+
+      <div class="health">
+        <p-tag
+          value="Healthy"
+          severity="success">
+        </p-tag>
+      </div>
+
+    </p-card>
+
+  </section>
+
+
+  <section class="users">
+
+    <p-card header="Recent Users">
+
+      <p-table [value]="users">
+
+        <ng-template #header>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Status</th>
+          </tr>
+        </ng-template>
+
+        <ng-template #body let-user>
+          <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+              <p-tag
+                [value]="user.status"
+                [severity]="user.status === 'Active' ? 'success' : 'danger'">
+              </p-tag>
+            </td>
+          </tr>
+        </ng-template>
+
+      </p-table>
+
+    </p-card>
+
+  </section>
+
+</div>
+
+<router-outlet />
